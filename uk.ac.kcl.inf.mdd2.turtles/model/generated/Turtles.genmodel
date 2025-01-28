@@ -38,7 +38,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Turtles.ecore#//IntExpression/val"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Turtles.ecore#//IntExpression/var"/>
     </genClasses>
-    <genClasses ecoreClass="Turtles.ecore#//Expression"/>
+    <genClasses ecoreClass="Turtles.ecore#//IntLiteral"/>
+    <genClasses ecoreClass="Turtles.ecore#//IntVarExpression"/>
     <genClasses ecoreClass="Turtles.ecore#//Addition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Turtles.ecore#//Addition/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Turtles.ecore#//Addition/right"/>

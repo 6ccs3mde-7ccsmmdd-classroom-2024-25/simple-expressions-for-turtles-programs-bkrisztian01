@@ -27,7 +27,7 @@ LoopStatement:
 ;
 
 MoveStatement:
-	command = MoveCommand "(" steps = IntExpression ")"
+	command = MoveCommand "(" steps = Addition ")"
 ;
 
 enum MoveCommand:
@@ -47,19 +47,28 @@ IntExpression:
 	var = [VariableDeclaration]
 ;
 
+IntLiteral:
+	val = INT
+;
+
 REAL returns ecore::EFloat hidden():
 	INT? "." INT
 ;
 
-Addition returns Expression:
+Addition returns IntExpression:
 	Multiplication ({Addition.left=current} '+' right+=Multiplication)*
 ;
 
-Multiplication returns Expression:
+Multiplication returns IntExpression:
 	Primary ({Multiplication.left=current} '*' right+=Primary)*
 ;
 
-Primary returns Expression:
-	IntExpression | '(' Addition ')'
+Primary returns IntExpression:
+	IntLiteral |
+	IntVarExpression |
+	'(' Addition ')'
 ;
 
+IntVarExpression:
+	var = [VariableDeclaration]
+;
