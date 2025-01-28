@@ -21,7 +21,7 @@ VariableDeclaration:
 ;
 
 LoopStatement:
-	count = IntExpression "times" "do"
+	count = Addition "times" "do"
 	  statements += Statement+
 	"end"
 ;
@@ -49,4 +49,17 @@ IntExpression:
 
 REAL returns ecore::EFloat hidden():
 	INT? "." INT
-; 
+;
+
+Addition returns Expression:
+	Multiplication ({Addition.left=current} '+' right+=Multiplication)*
+;
+
+Multiplication returns Expression:
+	Primary ({Multiplication.left=current} '*' right+=Primary)*
+;
+
+Primary returns Expression:
+	IntExpression | '(' Addition ')'
+;
+
